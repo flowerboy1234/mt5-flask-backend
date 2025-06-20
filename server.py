@@ -8,6 +8,16 @@ app = Flask(__name__)
 def index():
     return "MT5 Flask API is running on VPS"
 
+@app.route('/login', methods=['POST'])
+def save_login():
+    try:
+        data = request.json
+        with open('login_credentials.json', 'w') as f:
+            json.dump(data, f)
+        return jsonify({'message': 'Login credentials saved'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/trade', methods=['POST'])
 def save_trade():
     data = request.get_json()
