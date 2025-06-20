@@ -1,0 +1,4 @@
+*.pyc
+__pycache__/
+trade_instructions.json
+ea_status.txt
